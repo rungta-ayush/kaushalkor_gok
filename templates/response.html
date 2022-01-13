@@ -1,0 +1,11 @@
+
+</script>
+<div class="form-group">
+      <label>Select Sub Category</label>
+      <select name="sub_category"  id="sub_category_id" class="form-control">
+         <option value="" selected="selected"></option>
+          {% for item in list_1 %}
+          <option value="{{item}}">{{item}}</option>
+          {% endfor %}
+      </select>
+</div>
