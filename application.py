@@ -75,7 +75,6 @@ def get_child_categories():
             dict2[list2[0]] = list2[1]
 
         parent_id = request.form["parent_id"]
-        print(parent_id)
         url = "https://www.kaushalkar.com/webservices/ws/getTaluksByDistrictId"
         pp = get_key(parent_id, dict2)
         payload = {'districtId': pp}
@@ -98,7 +97,7 @@ def get_child_categories():
                 list.append(v)
             dict[list[0]] = list[1]
         list_1 = dict.values()
-        print(list_1)
+        
     return jsonify({'htmlresponse': render_template('response.html', list_1=list_1)})
 
 
@@ -119,14 +118,13 @@ def result():
         for v in tt:
             list.append(v)
         dict[list[0]] = list[1]
-    print(dict.keys())
+    
     output = request.form.get("search_category")
     output1 = request.form.get("sub_category")
     for key, value in dict.items():
         if value == output:
             disID = key
 
-    print(disID)
     url11 = "https://www.kaushalkar.com/webservices/ws/getTaluksByDistrictId"
     payload11 = {'districtId': disID}
     files11 = []
@@ -147,7 +145,7 @@ def result():
         if value == output1:
             talkID = key
 
-    print(talkID)
+    
 
     l1 = giveDetailsOfTaluk(talkID, disID)
     pd.DataFrame(l1).to_excel("static/output.xlsx")
@@ -171,7 +169,7 @@ def result1():
         for v in tt:
             list.append(v)
         dict[list[0]] = list[1]
-    print(dict.keys())
+    
     output = request.form.get("search_category1")
     # output1 = request.form.get("sub_category")
     for key, value in dict.items():
